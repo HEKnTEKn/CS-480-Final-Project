@@ -19,7 +19,7 @@ class DB:
                 host="localhost",
                 user="root",
                 password="",
-                database="cs480-esports"
+                database="esports"
             )
             self.instance.cursor = self.instance.database.cursor()
 
@@ -32,7 +32,7 @@ class DB:
     def performQuery(self, query):
         self.instance.cursor.execute(query)
 
-        result =  self.instance.cursor.fetchall()
+        result = self.instance.cursor.fetchall()
 
         for x in result:
             print(x)
