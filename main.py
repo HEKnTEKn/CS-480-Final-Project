@@ -6,16 +6,42 @@ sqlDatabase.performQuery("SELECT * FROM matches2020;")
 
 sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
-layout = [  [sg.Text('Some text on Row 1')],
-            [sg.Text('Enter something on Row 2'), sg.InputText()],
-            [sg.Button('Ok'), sg.Button('Cancel')] ]
 
-# Create the Window
-window = sg.Window('Window Title', layout)
-# Event Loop to process "events" and get the "values" of the inputs
+sql_searh = [
+    [
+        sg.Text("Search Esport"),
+        sg.In(size=(25, 1), enable_events=True, key="-esport-"),
+        sg.FolderBrowse(),
+    ],
+    [
+        sg.Listbox(
+            values=[], enable_events=True, size=(75, 36), key="-FILE LIST-"
+        )
+    ],
+]
+
+sql_output = [
+
+    [
+        sg.Listbox(
+            values=[], enable_events=True, size=(75, 36), key="-OUT LIST-"
+        )
+    ],
+]
+layout = [
+    [
+        sg.Column(sql_searh),
+        sg.VSeperator(),
+        sg.Column(sql_output),
+    ]
+]
+
+window = sg.Window("Image Viewer", layout)
+
+# Run the Event Loop
 while True:
     event, values = window.read()
-    if event == sg.WIN_CLOSED or event == 'Cancel':  # if user closes window or clicks cancel
+    if event == "Exit" or event == sg.WIN_CLOSED:
         break
     print('You entered ', values[0])
 
