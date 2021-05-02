@@ -1,14 +1,9 @@
 import PySimpleGUI as sg
-import mysql.connector
+import mySQLDatabase
 
+sqlDatabase = mySQLDatabase.instantiateDB()
+print(sqlDatabase)
 
-database = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password=""
-)
-
-print(database)
 
 
 sg.theme('DarkAmber')   # Add a touch of color
