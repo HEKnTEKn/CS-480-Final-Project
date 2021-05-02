@@ -1,3 +1,4 @@
+DROP USER IF EXISTS 'guest'@'localhost';
 CREATE USER 'guest'@'localhost' IDENTIFIED BY '';
 
 GRANT Select ON championstats TO 'guest'@'localhost';
