@@ -36,7 +36,7 @@ sql_search = [
     [
         sg.Listbox(
             values=["01. Custom Query - Input: a mySQL query within the bounds of Select permissions - Output: The result of that query.",
-                    "02. Most Popular Champion - Input: role - Output: Champion and number of times played",
+                    "02. Most Popular Champion - Input: role (ie. top) - Output: Champion and number of times played",
                     "03. Number of Wins - Input: TeamName (surrounded by quotation marks) - Output: the number of wins that the given team had that year.",
                     "04. Match Winner - Input: matchID (ex.5655-7249) - Output: the Winning team, and players of that team.",
                     "05. Tag-Move Speed - Input: A tag of a champion (ex. Mage, Bruiser) - Output: The movespeeds of the champions, asc.",
@@ -50,8 +50,8 @@ sql_search = [
                     "13. Armor - Input: Champion Name(ie. Jhin) - Output: Armor levels.",
                     "14. Magic Resist - Input: Champion Name(ie. Jhin) - Output: Magic Resist levels.",
                     "15. All Stats - Input: Champion tag (ie.Assassin) - Output: All stats of that tag, organized by name",
-                    "16. Specify - Input: Team Name, Role - Output: A list of champions the role has played on their team",
-                    "17. Rivalry - Input: Team A, Team B - Output: all games between the two, and stats of them."
+                    "16. Specify - Input: Team Name, Role (ie. G2 Esports, top) - Output: A list of champions the role has played on their team",
+                    "17. Rivalry - Input: Team A, Team B (ie. G2 Esports, Fnatic) - Output: all games between the two, and stats of them."
                     ], enable_events=True, size=(125, 36), auto_size_text=True,  key="-FILE LIST-"
         )
     ],
