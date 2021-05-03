@@ -16,10 +16,10 @@ sql_search = [
     ],
     [
         sg.Listbox(
-            values=["Games Won",
-                    "Games Lost",
-                    "Player With Most Points",
-                    "Game Stats"], enable_events=True, size=(75, 36), key="-FILE LIST-"
+            values=["1. Games Won",
+                    "2. Games Lost",
+                    "3. Player With Most Points",
+                    "4. Game Stats"], enable_events=True, size=(75, 36), key="-FILE LIST-"
         )
     ],
 ]
