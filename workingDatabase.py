@@ -4,10 +4,10 @@ import mysql.connector
 class Singleton(type):
     _instances = {}
 
-    def __call__(classObject, *args, **kwargs):
-        if classObject not in classObject._instances:
-            classObject._instances[classObject] = super(Singleton, classObject).__call__(*args, **kwargs)
-        return classObject._instances[classObject]
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
 
 
 class DB(metaclass=Singleton):
