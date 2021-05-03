@@ -7,7 +7,7 @@ sqlDatabase = workingDatabase.DB()
 
 sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
-# sg.theme('DarkAmber')   # Add a touch of color
+sg.theme('DarkBlue2')   # Add a touch of color
 # All the stuff inside your window.
 
 def word():
@@ -29,7 +29,7 @@ headings = [str(data[0][x])+'     ..' for x in range(len(data[0]))]
 sql_search = [
     [
         sg.Text("Optional Arguments"),
-        sg.In(size=(25, 1), enable_events=True, key="-inputArgs-"),
+        sg.Multiline(size=(25, 1), enable_events=True, key="-inputArgs-"),
         sg.Button('Submit', font=('Times New Roman', 12))
 
     ],
@@ -37,9 +37,11 @@ sql_search = [
         sg.Listbox(
             values=["1. Custom Query - Input: a mySQL query within the bounds of Select permissions - Output: The result of that query.",
                     "2. Most Popular Champion - Input: role - Output: Champion and number of times played",
-                    "3. Number of Wins - Input: team name - Output: the number of wins that the given team had that year.",
-                    "4. Match Winner - Input: match ID (ex.5655-7249) - Output: the Winning team, and players of that team"
-                    ], enable_events=True, size=(100, 36), key="-FILE LIST-"
+                    "3. Number of Wins - Input: 'TeamName' (surrounded by quotation marks) - Output: the number of wins that the given team had that year.",
+                    "4. Match Winner - Input: 'matchID' (ex.'5655-7249') - Output: the Winning team, and players of that team.",
+                    "5. Tag-Move Speed - Input: A tag of a champion (ex. Mage, Bruiser) - Output: The movespeeds of the champions, asc.",
+                    "6. Difficulty - Input: Champion Name (multiple can be selected in format 'champ1, champ2, champ3') - Output: Difficulty levels."
+                    ], enable_events=True, size=(125, 36), auto_size_text=True,  key="-FILE LIST-"
         )
     ],
 ]
@@ -84,6 +86,7 @@ while True:
 
         if values['-FILE LIST-'][0][0] == "1":
             result = sqlDatabase.performTextQuery(values['-inputArgs-'])
+            window['-OUT LIST-'].update(result)
         elif values['-FILE LIST-'][0][0] == "2":
             result = sqlDatabase.performInternalQuery("mostPlayed.sql", values['-inputArgs-'])
             window['-OUT LIST-'].update(result)
