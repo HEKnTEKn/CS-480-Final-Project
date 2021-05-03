@@ -1,3 +1,4 @@
+# This query takes 1 game-id and returns the team that won
 # SELECT result,
 #        IF(matches2020.result = 1, redteam, blueteam) as Team,
 #        IF(matches2020.result = 1, redtop, bluetop) as Top,

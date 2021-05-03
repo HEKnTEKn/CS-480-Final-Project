@@ -1,3 +1,4 @@
+# this query creates the guest role with select permission to give a custom query
 DROP USER IF EXISTS 'guest'@'localhost';
 CREATE USER 'guest'@'localhost' IDENTIFIED BY '';
 GRANT Select ON championstats TO 'guest'@'localhost';

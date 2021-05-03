@@ -1,3 +1,4 @@
+# this query takes a team name and returns the number of wins they acquired
 # SELECT sum(
 #     (case
 #         when (result = 1 AND redteam = 'FunPlus Phoenix') then 1
