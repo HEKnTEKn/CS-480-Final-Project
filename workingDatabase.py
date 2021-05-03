@@ -1,5 +1,4 @@
 import mysql.connector
-import sqlite3
 
 
 class Singleton(type):
@@ -42,10 +41,20 @@ class DB(metaclass=Singleton):
         for x in self.cursor:
             print(x)
 
-    def performQuery(self, query):
-        with open('queries/createGuest.sql', 'r') as sql_file:
-            self.cursor.execute(sql_file.read(), multi=True)
+    def performTextQuery(self, query):
+        fd = open('queries/createGuest.sql')
+        sqlFile = fd.read()
+        fd.close()
 
+        sqlCommands = sqlFile.split(';')
+
+        for command in sqlCommands:
+            try:
+                self.cursor.execute(command)
+            except Exception:
+                print("Command failed:", Exception)
+
+        self.database.commit()
         self.disconnect()
         self.connect("guest", "")
 

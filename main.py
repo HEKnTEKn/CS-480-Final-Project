@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 import workingDatabase
 sqlDatabase = workingDatabase.DB()
 
-sqlDatabase.performQuery("SELECT * FROM matches2020;")
+sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
 sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
