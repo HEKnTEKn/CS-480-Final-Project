@@ -2,8 +2,6 @@ import PySimpleGUI as sg
 import workingDatabase
 sqlDatabase = workingDatabase.DB()
 
-sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
-
 sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
 
@@ -44,5 +42,8 @@ while True:
     if event == "Exit" or event == sg.WIN_CLOSED:
         break
     print('You entered ', values[0])
+
+    if event == "Submit":
+        sqlDatabase.performInternalQuery(values[0], values[1])
 
 window.close()

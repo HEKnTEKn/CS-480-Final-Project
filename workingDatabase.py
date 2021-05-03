@@ -59,12 +59,6 @@ class DB(metaclass=Singleton):
 
         return self.cursor.fetchall()
 
-    def performInternalQuery(self, fileName):
-        result = self.queryFromFile(fileName)
-        # for x in result:
-        #     print(x)
-        return result
-
     def performTextQuery(self, query):
         self.queryFromFile("createGuest.sql")
 
@@ -80,4 +74,20 @@ class DB(metaclass=Singleton):
         self.disconnect()
         self.connect("root", "")
 
+        return result
+
+    def performInternalQuery(self, fileName, values):
+        fd = open('queries/' + fileName)
+        query = fd.read()
+        fd.close()
+
+        i = 0
+        for value in values:
+            i += 1
+            query.replace("{" + str(i) + "}", value)
+
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+        # for x in result:
+        #     print(x)
         return result
