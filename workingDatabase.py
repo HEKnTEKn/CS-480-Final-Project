@@ -41,8 +41,8 @@ class DB(metaclass=Singleton):
         for x in self.cursor:
             print(x)
 
-    def performTextQuery(self, query):
-        fd = open('queries/createGuest.sql')
+    def queryFromFile(self, fileName):
+        fd = open('queries/' + fileName)
         sqlFile = fd.read()
         fd.close()
 
@@ -51,8 +51,22 @@ class DB(metaclass=Singleton):
         for command in sqlCommands:
             try:
                 self.cursor.execute(command)
-            except Exception:
-                print("Command failed:", Exception)
+            except mysql.connector.Error as err:
+                print("Command failed:", err)
+                print("Error Code:", err.errno)
+                print("SQLSTATE", err.sqlstate)
+                print("Message", err.msg)
+
+        return self.cursor.fetchall()
+
+    def performInternalQuery(self, fileName):
+        result = self.queryFromFile(fileName)
+        # for x in result:
+        #     print(x)
+        return result
+
+    def performTextQuery(self, query):
+        self.queryFromFile("createGuest.sql")
 
         self.database.commit()
         self.disconnect()
@@ -61,13 +75,9 @@ class DB(metaclass=Singleton):
         self.cursor.execute(query)
 
         result = self.cursor.fetchall()
-
-        for x in result:
-            print(x)
-
+        # for x in result:
+        #     print(x)
         self.disconnect()
         self.connect("root", "")
 
-        # return result
-
-
+        return result
