@@ -55,3 +55,6 @@ Project for CS 480 - Databases with Sean Deitz.
     "17. Rivalry - Input: Team A, Team B (ie. G2 Esports, Fnatic) - Output: all games between the two, and stats of them."
 
     Clicking the top right button on the screen will close the window and end the program execution.
+
+### Tip
+    If the gui fails to populate, you can still verify that the proper sql results are being returned by looking at the command line, which will print out the result as well for debugging purposes. The output window to the right is currently not fully functional.
