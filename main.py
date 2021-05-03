@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import workingDatabase
-
+import random
+import string
 
 sqlDatabase = workingDatabase.DB()
 
@@ -8,6 +9,22 @@ sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
 # sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
+
+def word():
+    return ''.join(random.choice(string.ascii_lowercase) for i in range(10))
+def number(max_val=1000):
+    return random.randint(0, max_val)
+
+def make_table(num_rows, num_cols):
+    data = [[j for j in range(num_cols)] for i in range(num_rows)]
+    data[0] = [word() for __ in range(num_cols)]
+    for i in range(1, num_rows):
+        data[i] = [word(), *[number() for i in range(num_cols - 1)]]
+    return data
+
+# ------ Make the Table Data ------
+data = make_table(num_rows=15, num_cols=6)
+headings = [str(data[0][x])+'     ..' for x in range(len(data[0]))]
 
 sql_search = [
     [
@@ -18,10 +35,11 @@ sql_search = [
     ],
     [
         sg.Listbox(
-            values=["1. Games Won",
-                    "2. Games Lost",
-                    "3. Player With Most Points",
-                    "4. Game Stats"], enable_events=True, size=(75, 36), key="-FILE LIST-"
+            values=["1. Custom Query - Input: a mySQL query within the bounds of Select permissions - Output: The result of that query.",
+                    "2. Most Popular Champion - Input: role - Output: Champion and number of times played",
+                    "3. Number of Wins - Input: team name - Output: the number of wins that the given team had that year.",
+                    "4. Match Winner - Input: match ID (ex.5655-7249) - Output: the Winning team, and players of that team"
+                    ], enable_events=True, size=(100, 36), key="-FILE LIST-"
         )
     ],
 ]
@@ -33,8 +51,15 @@ sql_output = [
 
     [
 
-        sg.Listbox(
-            values=[], enable_events=True, size=(75, 36), key="-OUT LIST-"
+        sg.Table(
+
+                    values=data[1:][:], headings=headings, max_col_width=25,
+                    auto_size_columns=True,
+                    display_row_numbers=True,
+                    justification='right',
+                    num_rows=20,
+                    alternating_row_color='lightyellow',
+                    key='-TABLE-',
         )
     ],
 ]
@@ -56,7 +81,20 @@ while True:
 
     if event == 'Submit':
         print("submit button pressed!")
+
         if values['-FILE LIST-'][0][0] == "1":
+            result = sqlDatabase.performTextQuery(values['-inputArgs-'])
+        elif values['-FILE LIST-'][0][0] == "2":
             result = sqlDatabase.performInternalQuery("mostPlayed.sql", values['-inputArgs-'])
+            window['-OUT LIST-'].update(result)
+        elif values['-FILE LIST-'][0][0] == "3":
+            result = sqlDatabase.performInternalQuery("numWins.sql", values['-inputArgs-'])
+            window['-OUT LIST-'].update(result)
+        elif values['-FILE LIST-'][0][0] == "4":
+            result = sqlDatabase.performInternalQuery("winner.sql", values['-inputArgs-'])
+            window['-OUT LIST-'].update(result)
+        else:
+            window['-OUT LIST-'].update("Sorry, but the selection you entered is not acceptable. Please try again!")
+
 
 window.close()
