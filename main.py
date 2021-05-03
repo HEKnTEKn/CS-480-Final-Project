@@ -1,13 +1,13 @@
 import PySimpleGUI as sg
 import workingDatabase
-sqlDatabase = workingDatabase.DB()
 
+sqlDatabase = workingDatabase.DB()
 
 # All the stuff inside your window.
 
 sql_search = [
     [
-        sg.Text("Search E-sport"),
+        sg.Text("Optional Parameters"),
         sg.In(size=(25, 1), enable_events=True, key="-esport-"),
 
     ],
@@ -42,12 +42,10 @@ while True:
     # Run the Event Loop
     event, values = window.read()
 
-    if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
+    if event == sg.WIN_CLOSED or event == 'Cancel':  # if user closes window or clicks cancel
         break
 
     if event == 'submit':
         sqlDatabase.performInternalQuery(values[0], values[1])
-
-
 
 window.close()
