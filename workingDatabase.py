@@ -73,8 +73,8 @@ class DB(metaclass=Singleton):
         self.cursor.execute(query)
 
         result = self.cursor.fetchall()
-        # for x in result:
-        #     print(x)
+        for x in result:
+            print(x)
         self.disconnect()
         self.connect("root", "")
 
@@ -95,6 +95,6 @@ class DB(metaclass=Singleton):
 
         # self.cursor.execute(query, multi=True)
         result = self.cursor.fetchall()
-        # for x in result:
-        #     print(x)
+        for x in result:
+            print(x)
         return result

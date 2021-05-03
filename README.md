@@ -38,7 +38,7 @@ Project for CS 480 - Databases with Sean Deitz.
 
     "01. Custom Query - Input: a mySQL query within the bounds of Select permissions - Output: The result of that query.",
     "02. Most Popular Champion - Input: role (ie. top) - Output: Champion and number of times played",
-    "03. Number of Wins - Input: TeamName (surrounded by quotation marks) - Output: the number of wins that the given team had that year.",
+    "03. Number of Wins - Input: TeamName (ie. Fnatic) - Output: the number of wins that the given team had that year.",
     "04. Match Winner - Input: matchID (ex.5655-7249) - Output: the Winning team, and players of that team.",
     "05. Tag-Move Speed - Input: A tag of a champion (ex. Mage, Bruiser) - Output: The movespeeds of the champions, asc.",
     "06. Difficulty - Input: Champion Name(ie. Jhin) - Output: Difficulty levels.",
