@@ -40,5 +40,7 @@ window = sg.Window("Image Viewer", layout)
 
 # Run the Event Loop
 event, values = window.read()
+if event == 'submit':
+    sqlDatabase.performInternalQuery(values[0], values[1])
 
 window.close()
