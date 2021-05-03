@@ -49,13 +49,14 @@ class DB(metaclass=Singleton):
         sqlCommands = sqlFile.split(';')
 
         for command in sqlCommands:
-            try:
-                self.cursor.execute(command)
-            except mysql.connector.Error as err:
-                print("Command failed:", err)
-                print("Error Code:", err.errno)
-                print("SQLSTATE", err.sqlstate)
-                print("Message", err.msg)
+            if not command.startswith(' #done'):
+                try:
+                    self.cursor.execute(command)
+                except mysql.connector.Error as err:
+                    print("Command failed:", err)
+                    print("Error Code:", err.errno)
+                    print("SQLSTATE", err.sqlstate)
+                    print("Message", err.msg)
 
         return self.cursor.fetchall()
 
