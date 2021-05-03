@@ -7,16 +7,19 @@ sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 #sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
 
-sql_searh = [
+sql_search = [
     [
-        sg.Text("Search Esport"),
-        sg.In(size=(25, 1), enable_events=True, key="-esport-"),
+        sg.Text("Optional Arguments"),
+        sg.In(size=(25, 1), enable_events=True, key="-inputArgs-"),
         sg.Button('Submit', font=('Times New Roman', 12))
 
     ],
     [
         sg.Listbox(
-            values=["Games Won", "Games Lost", "Player With Most Points", "Game Stats"], enable_events=True, size=(75, 36), key="-FILE LIST-"
+            values=["Games Won",
+                    "Games Lost",
+                    "Player With Most Points",
+                    "Game Stats"], enable_events=True, size=(75, 36), key="-FILE LIST-"
         )
     ],
 ]
@@ -35,7 +38,7 @@ sql_output = [
 ]
 layout = [
     [
-        sg.Column(sql_searh),
+        sg.Column(sql_search),
         sg.VSeperator(),
         sg.Column(sql_output),
     ]
