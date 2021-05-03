@@ -86,18 +86,18 @@ while True:
 
         if values['-FILE LIST-'][0][0] == "1":
             result = sqlDatabase.performTextQuery(values['-inputArgs-'])
-            window['-OUT LIST-'].update(result)
+            window['-TABLE-'].update(result)
         elif values['-FILE LIST-'][0][0] == "2":
             result = sqlDatabase.performInternalQuery("mostPlayed.sql", values['-inputArgs-'])
-            window['-OUT LIST-'].update(result)
+            window['-TABLE-'].update(result)
         elif values['-FILE LIST-'][0][0] == "3":
             result = sqlDatabase.performInternalQuery("numWins.sql", values['-inputArgs-'])
-            window['-OUT LIST-'].update(result)
+            window['-TABLE-'].update(result)
         elif values['-FILE LIST-'][0][0] == "4":
             result = sqlDatabase.performInternalQuery("winner.sql", values['-inputArgs-'])
-            window['-OUT LIST-'].update(result)
+            window['-TABLE-'].update(result)
         else:
-            window['-OUT LIST-'].update("Sorry, but the selection you entered is not acceptable. Please try again!")
+            window['-TABLE-'].update("Sorry, but the selection you entered is not acceptable. Please try again!")
 
 
 window.close()
