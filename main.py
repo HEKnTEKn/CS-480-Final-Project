@@ -9,7 +9,6 @@ sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
 sql_searh = [
     [
-        #sg.Text("Look Into The Esports Data To Stay Updated!", font=('Times New Roman', 20)),
         sg.Text("Search Esport"),
         sg.In(size=(25, 1), enable_events=True, key="-esport-"),
         sg.Button('Submit', font=('Times New Roman', 12))
@@ -23,8 +22,12 @@ sql_searh = [
 ]
 
 sql_output = [
+    [
+        sg.Text("Look Into The Esports Data To Stay Updated!", font=('Times New Roman', 20)),
+    ],
 
     [
+
         sg.Listbox(
             values=[], enable_events=True, size=(75, 36), key="-OUT LIST-"
         )
