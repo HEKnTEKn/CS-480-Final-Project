@@ -4,18 +4,19 @@ sqlDatabase = workingDatabase.DB()
 
 sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
-sg.theme('DarkAmber')   # Add a touch of color
+#sg.theme('')   # Add a touch of color
 # All the stuff inside your window.
 
 sql_searh = [
     [
-        sg.Text("Search Esport"),
-        sg.In(size=(25, 1), enable_events=True, key="-esport-"),
-        sg.FolderBrowse(),
+        sg.Text("Custom Query"),
+        sg.In(size=(65, 6), enable_events=True, key="-esport-"),
+
     ],
     [
         sg.Listbox(
-            values=[], enable_events=True, size=(75, 36), key="-FILE LIST-"
+
+            values=['Games Won', 'Games Lost', 'Total games played', 'Player with most points'], enable_events=True, size=(75, 36), key="-FILE LIST-"
         )
     ],
 ]
@@ -36,13 +37,8 @@ layout = [
     ]
 ]
 
-window = sg.Window("Image Viewer", layout)
+window = sg.Window("Esports Data", layout)
 
-# Run the Event Loop
-while True:
-    event, values = window.read()
-    if event == "Exit" or event == sg.WIN_CLOSED:
-        break
-    print('You entered ', values[0])
+event, values = window.read()
 
 window.close()
