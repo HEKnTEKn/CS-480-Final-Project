@@ -28,19 +28,30 @@ headings = [str(data[0][x])+'     ..' for x in range(len(data[0]))]
 
 sql_search = [
     [
-        sg.Text("Optional Arguments"),
+        sg.Text("Input Arguments"),
         sg.Multiline(size=(25, 1), enable_events=True, key="-inputArgs-"),
         sg.Button('Submit', font=('Times New Roman', 12))
 
     ],
     [
         sg.Listbox(
-            values=["1. Custom Query - Input: a mySQL query within the bounds of Select permissions - Output: The result of that query.",
-                    "2. Most Popular Champion - Input: role - Output: Champion and number of times played",
-                    "3. Number of Wins - Input: 'TeamName' (surrounded by quotation marks) - Output: the number of wins that the given team had that year.",
-                    "4. Match Winner - Input: 'matchID' (ex.'5655-7249') - Output: the Winning team, and players of that team.",
-                    "5. Tag-Move Speed - Input: A tag of a champion (ex. Mage, Bruiser) - Output: The movespeeds of the champions, asc.",
-                    "6. Difficulty - Input: Champion Name (multiple can be selected in format 'champ1, champ2, champ3') - Output: Difficulty levels."
+            values=["01. Custom Query - Input: a mySQL query within the bounds of Select permissions - Output: The result of that query.",
+                    "02. Most Popular Champion - Input: role - Output: Champion and number of times played",
+                    "03. Number of Wins - Input: TeamName (surrounded by quotation marks) - Output: the number of wins that the given team had that year.",
+                    "04. Match Winner - Input: matchID (ex.5655-7249) - Output: the Winning team, and players of that team.",
+                    "05. Tag-Move Speed - Input: A tag of a champion (ex. Mage, Bruiser) - Output: The movespeeds of the champions, asc.",
+                    "06. Difficulty - Input: Champion Name(ie. Jhin) - Output: Difficulty levels.",
+                    "07. Health - Input: Champion Name(ie. Jhin) - Output: Health levels.",
+                    "08. Mana - Input: Champion Name(ie. Jhin) - Output: Mana levels.",
+                    "09. Move Speed - Input: Champion Name(ie. Jhin) - Output: Move Speed levels.",
+                    "10. Attack Damage - Input: Champion Name(ie. Jhin) - Output: Attack Damage levels.",
+                    "11. Attack Range - Input: Champion Name(ie. Jhin) - Output: Attack Range levels.",
+                    "12. Attack Speed -  Input: Champion Name(ie. Jhin) - Output: Attack Speed levels.",
+                    "13. Armor - Input: Champion Name(ie. Jhin) - Output: Armor levels.",
+                    "14. Magic Resist - Input: Champion Name(ie. Jhin) - Output: Magic Resist levels.",
+                    "15. All Stats - Input: Champion tag (ie.Assassin) - Output: All stats of that tag, organized by name",
+                    "16. Specify - Input: Team Name, Role - Output: A list of champions the role has played on their team",
+                    "17. Rivalry - Input: Team A, Team B - Output: all games between the two, and stats of them."
                     ], enable_events=True, size=(125, 36), auto_size_text=True,  key="-FILE LIST-"
         )
     ],
@@ -84,18 +95,58 @@ while True:
     if event == 'Submit':
         print("submit button pressed!")
 
-        if values['-FILE LIST-'][0][0] == "1":
+        if values['-FILE LIST-'][0][:2] == "01":
             result = sqlDatabase.performTextQuery(values['-inputArgs-'])
             window['-TABLE-'].update(result)
-        elif values['-FILE LIST-'][0][0] == "2":
-            result = sqlDatabase.performInternalQuery("mostPlayed.sql", values['-inputArgs-'])
+        elif values['-FILE LIST-'][0][:2] == "02":
+            result = sqlDatabase.performInternalQuery("02.sql", values['-inputArgs-'])
             window['-TABLE-'].update(result)
-        elif values['-FILE LIST-'][0][0] == "3":
-            result = sqlDatabase.performInternalQuery("numWins.sql", values['-inputArgs-'])
+        elif values['-FILE LIST-'][0][:2] == "03":
+            result = sqlDatabase.performInternalQuery("03.sql", values['-inputArgs-'])
             window['-TABLE-'].update(result)
-        elif values['-FILE LIST-'][0][0] == "4":
-            result = sqlDatabase.performInternalQuery("winner.sql", values['-inputArgs-'])
+        elif values['-FILE LIST-'][0][:2] == "04":
+            result = sqlDatabase.performInternalQuery("04.sql", values['-inputArgs-'])
             window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "05":
+            result = sqlDatabase.performInternalQuery("05.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "06":
+            result = sqlDatabase.performInternalQuery("06.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "07":
+            result = sqlDatabase.performInternalQuery("07.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "08":
+            result = sqlDatabase.performInternalQuery("08.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "09":
+            result = sqlDatabase.performInternalQuery("09.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "10":
+            result = sqlDatabase.performInternalQuery("10.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "11":
+            result = sqlDatabase.performInternalQuery("11.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "12":
+            result = sqlDatabase.performInternalQuery("12.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "13":
+            result = sqlDatabase.performInternalQuery("13.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "14":
+            result = sqlDatabase.performInternalQuery("14.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "15":
+            result = sqlDatabase.performInternalQuery("15.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "16":
+            result = sqlDatabase.performInternalQuery("16.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+        elif values['-FILE LIST-'][0][:2] == "17":
+            result = sqlDatabase.performInternalQuery("17.sql", values['-inputArgs-'])
+            window['-TABLE-'].update(result)
+
         else:
             window['-TABLE-'].update("Sorry, but the selection you entered is not acceptable. Please try again!")
 

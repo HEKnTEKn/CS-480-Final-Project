@@ -1,7 +1,7 @@
 SELECT sum(
     (case
-        when (result = 0 AND redteam = {1}) then 1
-        when (result = 1 AND blueTeam = {1}) then 1
+        when (result = 0 AND redteam = '{1}') then 1
+        when (result = 1 AND blueTeam = '{1}') then 1
         else 0
         end
         ))

@@ -6,7 +6,7 @@ SELECT result,
        IF(matches2020.result = 0, redadc, blueadc) as ADC,
        IF(matches2020.result = 0, redsupport, bluesupport) as Support
 FROM matches2020
-WHERE gameid = {1}; #done
+WHERE gameid = '{1}'; #done
 
 # This query takes 1 game-id and returns the team that won
 # SELECT result,
