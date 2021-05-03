@@ -2,18 +2,20 @@ import PySimpleGUI as sg
 import workingDatabase
 sqlDatabase = workingDatabase.DB()
 
-sg.theme('DarkAmber')   # Add a touch of color
+sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
+
+#sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
 
 sql_searh = [
     [
         sg.Text("Search Esport"),
         sg.In(size=(25, 1), enable_events=True, key="-esport-"),
-        sg.FolderBrowse(),
+
     ],
     [
         sg.Listbox(
-            values=[], enable_events=True, size=(75, 36), key="-FILE LIST-"
+            values=["Games Won", "Games Lost", "Player With Most Points", "Game Stats"], enable_events=True, size=(75, 36), key="-FILE LIST-"
         )
     ],
 ]
@@ -37,13 +39,8 @@ layout = [
 window = sg.Window("Image Viewer", layout)
 
 # Run the Event Loop
-while True:
-    event, values = window.read()
-    if event == "Exit" or event == sg.WIN_CLOSED:
-        break
-    print('You entered ', values[0])
-
-    if event == "Submit":
-        sqlDatabase.performInternalQuery(values[0], values[1])
+event, values = window.read()
+if event == 'submit':
+    sqlDatabase.performInternalQuery(values[0], values[1])
 
 window.close()
