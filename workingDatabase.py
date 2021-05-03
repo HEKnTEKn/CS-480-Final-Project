@@ -85,7 +85,7 @@ class DB(metaclass=Singleton):
         query = fd.read()
         fd.close()
 
-        splitString = arguments.split()
+        splitString = arguments.split(',')
         i = 0
         for value in splitString:
             i += 1
@@ -95,6 +95,6 @@ class DB(metaclass=Singleton):
 
         # self.cursor.execute(query, multi=True)
         result = self.cursor.fetchall()
-        for x in result:
-            print(x)
+        # for x in result:
+        #     print(x)
         return result
