@@ -41,12 +41,8 @@ class DB(metaclass=Singleton):
         for x in self.cursor:
             print(x)
 
-    def queryFromFile(self, fileName):
-        fd = open('queries/' + fileName)
-        sqlFile = fd.read()
-        fd.close()
-
-        sqlCommands = sqlFile.split(';')
+    def executeQuery(self, query):
+        sqlCommands = query.split(';')
 
         for command in sqlCommands:
             if not command.startswith(' #done'):
@@ -57,6 +53,13 @@ class DB(metaclass=Singleton):
                     print("Error Code:", err.errno)
                     print("SQLSTATE", err.sqlstate)
                     print("Message", err.msg)
+
+    def queryFromFile(self, fileName):
+        fd = open('queries/' + fileName)
+        sqlFile = fd.read()
+        fd.close()
+
+        self.executeQuery(sqlFile)
 
         return self.cursor.fetchall()
 
@@ -77,18 +80,21 @@ class DB(metaclass=Singleton):
 
         return result
 
-    def performInternalQuery(self, fileName, values):
+    def performInternalQuery(self, fileName, arguments):
         fd = open('queries/' + fileName)
         query = fd.read()
         fd.close()
 
+        splitString = arguments.split()
         i = 0
-        for value in values:
+        for value in splitString:
             i += 1
-            query.replace("{" + str(i) + "}", value)
+            query = query.replace('{' + str(i) + '}', value)
 
-        self.cursor.execute(query)
+        self.executeQuery(query)
+
+        # self.cursor.execute(query, multi=True)
         result = self.cursor.fetchall()
-        # for x in result:
-        #     print(x)
+        for x in result:
+            print(x)
         return result

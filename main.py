@@ -1,10 +1,12 @@
 import PySimpleGUI as sg
 import workingDatabase
+
+
 sqlDatabase = workingDatabase.DB()
 
 sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
-#sg.theme('DarkAmber')   # Add a touch of color
+# sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
 
 sql_search = [
@@ -16,10 +18,10 @@ sql_search = [
     ],
     [
         sg.Listbox(
-            values=["Games Won",
-                    "Games Lost",
-                    "Player With Most Points",
-                    "Game Stats"], enable_events=True, size=(75, 36), key="-FILE LIST-"
+            values=["1. Games Won",
+                    "2. Games Lost",
+                    "3. Player With Most Points",
+                    "4. Game Stats"], enable_events=True, size=(75, 36), key="-FILE LIST-"
         )
     ],
 ]
@@ -53,8 +55,8 @@ while True:
         break
 
     if event == 'Submit':
-        sqlDatabase.performInternalQuery(values[0], values[1])
+        print("submit button pressed!")
+        if values['-FILE LIST-'][0][0] == "1":
+            result = sqlDatabase.performInternalQuery("mostPlayed.sql", values['-inputArgs-'])
 
 window.close()
-
-
