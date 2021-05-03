@@ -3,12 +3,16 @@ import workingDatabase
 
 sqlDatabase = workingDatabase.DB()
 
+sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
+
+#sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
 
 sql_search = [
     [
         sg.Text("Optional Parameters"),
         sg.In(size=(25, 1), enable_events=True, key="-esport-"),
+        sg.Button('Submit', font=('Times New Roman', 12))
 
     ],
     [
