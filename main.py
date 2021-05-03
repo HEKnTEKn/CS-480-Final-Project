@@ -9,6 +9,7 @@ sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
 sql_searh = [
     [
+        #sg.Text("Look Into The Esports Data To Stay Updated!", font=('Times New Roman', 20)),
         sg.Text("Search Esport"),
         sg.In(size=(25, 1), enable_events=True, key="-esport-"),
         sg.Button('Submit', font=('Times New Roman', 12))
@@ -38,10 +39,16 @@ layout = [
 ]
 
 window = sg.Window("Image Viewer", layout)
+while True:
+    # Run the Event Loop
+    event, values = window.read()
 
-# Run the Event Loop
-event, values = window.read()
-if event == 'submit':
-    sqlDatabase.performInternalQuery(values[0], values[1])
+    if event == sg.WIN_CLOSED or event == 'Cancel':  # if user closes window or clicks cancel
+        break
+
+    if event == 'Submit':
+        sqlDatabase.performInternalQuery(values[0], values[1])
 
 window.close()
+
+
