@@ -27,6 +27,12 @@ Project for CS 480 - Databases with Sean Deitz.
 
 ## Interactions
     Our Application uses pySimpleGUI to manage a very aesthetic front end. This front end allows you to pick one of many options, add any input parameters, and execute the query, where the result will be displayed on the right hand side of the screen.
+
+    For each option, a relevant sql query is stored in a sql file, with special characters marked for replacement based upon user input in a back end file where the database connections are made. This allows the user to access specific parts of the code, rather than only broad queries.
+
+    Also notable is the Custom Query option, where, given knowledge of the database used, allows the user to enter an entire SELECT query and receive the response. 
+
+    Reponses are all given as tuples, to be parsed into the GUI.
     
     Each option shows a sample input or expected parameters, and the expected output:
 
