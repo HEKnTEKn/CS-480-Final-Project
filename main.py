@@ -1,29 +1,15 @@
 import PySimpleGUI as sg
 import workingDatabase
-import random
-import string
-import config
-import itertools
-from pandas import DataFrame
-
 
 sqlDatabase = workingDatabase.DB()
 
 sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
-sg.theme('DarkTeal')   # Add a touch of color
-# All the stuff inside your window.
-
-#def word():
-#    return ''.join(random.choice(string.ascii_lowercase) for i in range(10))
-#def number(max_val=1000):
-#   return random.randint(0, max_val)
+sg.theme('DarkTeal')
 
 def make_table(num_rows, num_cols):
     data = [[j for j in range(num_cols)] for i in range(num_rows)]
-    #data[0] = [word() for __ in range(num_cols)]
-    #for i in range(1, num_rows):
-        #data[i] = [word(), *[number() for i in range(num_cols - 1)]]
+
     return data
 
 # ------ Make the Table Data ------
