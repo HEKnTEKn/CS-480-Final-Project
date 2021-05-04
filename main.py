@@ -7,14 +7,16 @@ sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
 sg.theme('DarkTeal')
 
+
 def make_table(num_rows, num_cols):
     data = [[j for j in range(num_cols)] for i in range(num_rows)]
 
     return data
 
+
 # ------ Make the Table Data ------
-data = make_table(num_rows=100, num_cols=6)
-headings = [str(data[0][x])+'     ' for x in range(len(data[0]))]
+data = make_table(num_rows=100, num_cols=10)
+headings = [str(data[0][x]) + '          ' for x in range(len(data[0]))]
 
 sql_search = [
     [
@@ -25,24 +27,25 @@ sql_search = [
     ],
     [
         sg.Listbox(
-            values=["01. Custom Query - Input: a mySQL query within the bounds of Select permissions - Output: The result of that query.",
-                    "02. Most Popular Champion - Input: role (ie. top) - Output: Champion and number of times played",
-                    "03. Number of Wins - Input: TeamName (ie. Fnatic) - Output: the number of wins that the given team had that year.",
-                    "04. Match Winner - Input: matchID (ex.5655-7249) - Output: the Winning team, and players of that team.",
-                    "05. Tag-Move Speed - Input: A tag of a champion (ex. Mage) - Output: The movespeeds of the champions, asc.",
-                    "06. Difficulty - Input: Champion Name(ie. Jhin) - Output: Difficulty levels.",
-                    "07. Health - Input: Champion Name(ie. Jhin) - Output: Health levels.",
-                    "08. Mana - Input: Champion Name(ie. Jhin) - Output: Mana levels.",
-                    "09. Move Speed - Input: Champion Name(ie. Jhin) - Output: Move Speed levels.",
-                    "10. Attack Damage - Input: Champion Name(ie. Jhin) - Output: Attack Damage levels.",
-                    "11. Attack Range - Input: Champion Name(ie. Jhin) - Output: Attack Range levels.",
-                    "12. Attack Speed -  Input: Champion Name(ie. Jhin) - Output: Attack Speed levels.",
-                    "13. Armor - Input: Champion Name(ie. Jhin) - Output: Armor levels.",
-                    "14. Magic Resist - Input: Champion Name(ie. Jhin) - Output: Magic Resist levels.",
-                    "15. All Stats - Input: Champion tag (ie.Assassin) - Output: All stats of that tag, organized by name",
-                    "16. Specify - Input: Team Name, Role (ie. G2 Esports,top) - Output: A list of champions the role has played on their team",
-                    "17. Rivalry - Input: Team A, Team B (ie. G2 Esports,Fnatic) - Output: all games between the two, and stats of them."
-                    ], enable_events=True, size=(100, 36), auto_size_text=True,  key="-FILE LIST-"
+            values=[
+                "01. Custom Query - Input: a mySQL query within the bounds of Select permissions - Output: The result of that query.",
+                "02. Most Popular Champion - Input: role (ie. top) - Output: Champion and number of times played",
+                "03. Number of Wins - Input: TeamName (ie. Fnatic) - Output: the number of wins that the given team had that year.",
+                "04. Match Winner - Input: matchID (ex.5655-7249) - Output: the Winning team, and players of that team.",
+                "05. Tag-Move Speed - Input: A tag of a champion (ex. Mage) - Output: The movespeeds of the champions, asc.",
+                "06. Difficulty - Input: Champion Name(ie. Jhin) - Output: Difficulty levels.",
+                "07. Health - Input: Champion Name(ie. Jhin) - Output: Health levels.",
+                "08. Mana - Input: Champion Name(ie. Jhin) - Output: Mana levels.",
+                "09. Move Speed - Input: Champion Name(ie. Jhin) - Output: Move Speed levels.",
+                "10. Attack Damage - Input: Champion Name(ie. Jhin) - Output: Attack Damage levels.",
+                "11. Attack Range - Input: Champion Name(ie. Jhin) - Output: Attack Range levels.",
+                "12. Attack Speed -  Input: Champion Name(ie. Jhin) - Output: Attack Speed levels.",
+                "13. Armor - Input: Champion Name(ie. Jhin) - Output: Armor levels.",
+                "14. Magic Resist - Input: Champion Name(ie. Jhin) - Output: Magic Resist levels.",
+                "15. All Stats - Input: Champion tag (ie.Assassin) - Output: All stats of that tag, organized by name",
+                "16. Specify - Input: Team Name, Role (ie. G2 Esports,top) - Output: A list of champions the role has played on their team",
+                "17. Rivalry - Input: Team A, Team B (ie. G2 Esports,Fnatic) - Output: all games between the two, and stats of them."
+                ], enable_events=True, size=(100, 36), auto_size_text=True, key="-FILE LIST-"
         )
     ],
 ]
@@ -56,13 +59,13 @@ sql_output = [
 
         sg.Table(
 
-                    values=data, headings=headings, max_col_width=25,
-                    auto_size_columns=True,
-                    display_row_numbers=True,
-                    justification='right',
-                    num_rows=20,
-                    alternating_row_color='lightyellow',
-                    key='-TABLE-',
+            values=data, headings=headings,
+            auto_size_columns=True,
+            display_row_numbers=True,
+            justification='right',
+            num_rows=20,
+            alternating_row_color='lightyellow',
+            key='-TABLE-',
         )
     ],
 ]
@@ -162,22 +165,23 @@ while True:
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "16":
             result = sqlDatabase.performInternalQuery("16.sql", values['-inputArgs-'])
-            prepend = ('Name', 'attack', 'defense', 'magic', 'difficulty', 'tags', 'hp', 'hpperlevel', 'mp', 'mpperlevel',
-                       'movespeed', 'armor', 'armorperlevel', 'spellblock', 'spellblockperlevel', 'attackrange',
-                       'hpregen', 'hpregenperlevel', 'mpregen', 'mpregenperlevel', 'crit', 'critperlevel',
-                       'attackdamage', 'attackdamageperlevel', 'attackspeedperlevel', 'attackspeed')
+            prepend = (
+            'Name', 'attack', 'defense', 'magic', 'difficulty', 'tags', 'hp', 'hpperlevel', 'mp', 'mpperlevel',
+            'movespeed', 'armor', 'armorperlevel', 'spellblock', 'spellblockperlevel', 'attackrange',
+            'hpregen', 'hpregenperlevel', 'mpregen', 'mpregenperlevel', 'crit', 'critperlevel',
+            'attackdamage', 'attackdamageperlevel', 'attackspeedperlevel', 'attackspeed')
             result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "17":
             result = sqlDatabase.performInternalQuery("17.sql", values['-inputArgs-'])
-            prepend = ('Game ID', 'Result', 'Total Team 1 Wins', ' Total Team 2 Wins', 'red top', 'red jungle', 'red mid',
-                       'red adc', 'red support', 'blue top', 'blue jungle', 'blue mid', 'blue adc', 'blue support')
+            prepend = (
+            'Game ID', 'Result', 'Total Team 1 Wins', ' Total Team 2 Wins', 'red top', 'red jungle', 'red mid',
+            'red adc', 'red support', 'blue top', 'blue jungle', 'blue mid', 'blue adc', 'blue support')
             result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
 
         else:
             print("error!")
             window['-TABLE-'].update("Sorry, but the selection you entered is not acceptable. Please try again!")
-
 
 window.close()
