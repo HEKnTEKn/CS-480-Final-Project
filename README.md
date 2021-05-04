@@ -30,7 +30,6 @@ Project for CS 480 - Databases with Sean Deitz.
 
     For each option, a relevant sql query is stored in a sql file, with special characters marked for replacement based upon user input in a back end file where the database connections are made. This allows the user to access specific parts of the code, rather than only broad queries.
 
-    Also notable is the Custom Query option, where, given knowledge of the database used, allows the user to enter an entire SELECT query and receive the response. 
 
     Reponses are all given as tuples, to be parsed into the GUI.
     
@@ -56,5 +55,14 @@ Project for CS 480 - Databases with Sean Deitz.
 
     Clicking the top right button on the screen will close the window and end the program execution.
 
+### Special Aspects
+    This project has a few unique properties which seperate it from other database projects. Namely, these are:
+
+#### Custom Query
+        The Custom Query option, when the user has knowledge of the database used, allows the user to enter an entire SELECT query and receive the tabulated response. This is done by creating a new User with SELECT priviledges in order to prevent the user from tampering with the static data. In the future this could be further worked on to allow users to add more games from future and modern years.
+
+#### Inpute Arguments
+        Every query option in this application requires the user to input special parameters to filter the massive table into a more readable, specified table. This is done behind the scenes in the workingDatabase.py file, where a singleton database is stored and special methods parse sql files and replace key portions of code into a new query.
+
 ### Tip
-    If the gui fails to populate, you can still verify that the proper sql results are being returned by looking at the command line, which will print out the result as well for debugging purposes. The output window to the right is currently not fully functional.
+    If the gui fails to populate every column due to size restrictions and differing screen resolutions, you can still verify that the proper sql results are being returned by looking at the command line, which will print out the result as well for debugging purposes.
