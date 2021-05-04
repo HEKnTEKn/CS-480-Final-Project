@@ -5,7 +5,7 @@ sqlDatabase = workingDatabase.DB()
 
 sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
-sg.theme('DarkTeal')
+sg.theme('DarkBlue2')
 
 
 def make_table(num_rows, num_cols):
@@ -64,7 +64,7 @@ sql_output = [
             display_row_numbers=True,
             justification='right',
             num_rows=20,
-            alternating_row_color='lightyellow',
+            alternating_row_color='black',
             key='-TABLE-',
         )
     ],
