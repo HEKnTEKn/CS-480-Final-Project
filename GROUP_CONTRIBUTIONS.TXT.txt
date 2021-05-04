@@ -4,4 +4,4 @@ Work Distribution:
 
 Victor Fong: Back end systems, setting up and returning queries, and writing up of sql queries 
 
-Jawad Khan: Front end system, setting up the GUI and parsing returned queries.
+Affan Khan: Front end system, setting up the GUI and parsing returned queries.

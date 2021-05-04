@@ -11,7 +11,7 @@ sqlDatabase = workingDatabase.DB()
 
 sqlDatabase.performTextQuery("SELECT * FROM matches2020;")
 
-#sg.theme('DarkBlue2')   # Add a touch of color
+sg.theme('DarkTeal')   # Add a touch of color
 # All the stuff inside your window.
 
 #def word():
@@ -100,56 +100,56 @@ while True:
         print("submit button pressed!")
 
         if values['-FILE LIST-'][0][:2] == "01":
-            result = list(sqlDatabase.performTextQuery(values['-inputArgs-']))
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            result = sqlDatabase.performTextQuery(values['-inputArgs-'])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "02":
             result = sqlDatabase.performInternalQuery("02.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "03":
             result = sqlDatabase.performInternalQuery("03.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "04":
             result = sqlDatabase.performInternalQuery("04.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "05":
             result = sqlDatabase.performInternalQuery("05.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "06":
             result = sqlDatabase.performInternalQuery("06.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "07":
             result = sqlDatabase.performInternalQuery("07.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "08":
             result = sqlDatabase.performInternalQuery("08.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "09":
             result = sqlDatabase.performInternalQuery("09.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in values])
+            window['-TABLE-'].update([list(result) for result in values])
         elif values['-FILE LIST-'][0][:2] == "10":
             result = sqlDatabase.performInternalQuery("10.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in values])
+            window['-TABLE-'].update([list(result) for result in values])
         elif values['-FILE LIST-'][0][:2] == "11":
             result = sqlDatabase.performInternalQuery("11.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in values])
+            window['-TABLE-'].update([list(result) for result in values])
         elif values['-FILE LIST-'][0][:2] == "12":
             result = sqlDatabase.performInternalQuery("12.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "13":
             result = sqlDatabase.performInternalQuery("13.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "14":
             result = sqlDatabase.performInternalQuery("14.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "15":
             result = sqlDatabase.performInternalQuery("15.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "16":
             result = sqlDatabase.performInternalQuery("16.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "17":
             result = sqlDatabase.performInternalQuery("17.sql", values['-inputArgs-'])
-            window['-TABLE-'].update([[1] + list(result) for result in result])
+            window['-TABLE-'].update([list(result) for result in result])
 
         else:
             print("error!")
