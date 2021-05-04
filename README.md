@@ -66,3 +66,5 @@ Project for CS 480 - Databases with Sean Deitz.
 
 ### Tip
     If the gui fails to populate every column due to size restrictions and differing screen resolutions, you can still verify that the proper sql results are being returned by looking at the command line, which will print out the result as well for debugging purposes.
+
+    Also, if you are unfamiliar with any of the terminology used for input arguments, you may use the examples in each option (where it says ex. in parentheses) to get a sample response.
