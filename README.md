@@ -13,7 +13,7 @@ Project for CS 480 - Databases with Sean Deitz.
     One thing to bear in mind is that one sql call within the project will drop a user 'guest'@'localhost' and then create one under the same name, granting it SELECT privileges. This in order to allow the Custom Query feature of the application.
 
 # 2. Application
-    The application is created using python3 on Pycharm, therefore a working Pycharm installation with python installed on the system is needed in order to run this project. Furthermore, a small number of packages are installed, using the pip python package installer:
+    The application is created using python3 on Pycharm (3.9 venv), therefore a working Pycharm installation with python installed on the system is needed in order to run this project. Furthermore, a small number of packages are installed, using the pip python package installer:
 
 ## pySimpleGUI - https://pysimplegui.readthedocs.io/en/latest/
     pip install pysimplegui

@@ -1,4 +1,4 @@
-SELECT red.red{1} as ADC, count(red.red{1}) as totalPlays
+SELECT red.red{1} as {1}, count(red.red{1}) as totalPlays
 FROM matches2020 red, matches2020 blue
 WHERE red.red{1} = blue.blue{1}
 GROUP BY red.red{1}

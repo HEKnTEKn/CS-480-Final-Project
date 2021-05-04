@@ -90,51 +90,89 @@ while True:
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "02":
             result = sqlDatabase.performInternalQuery("02.sql", values['-inputArgs-'])
+            prepend = (values['-inputArgs-'], 'Total Plays')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "03":
             result = sqlDatabase.performInternalQuery("03.sql", values['-inputArgs-'])
+            prepend = ('Team', 'Total Wins')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "04":
             result = sqlDatabase.performInternalQuery("04.sql", values['-inputArgs-'])
+            prepend = ('result', 'Team', 'Top', 'Jungle', 'Mid', 'ADC', 'Support')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "05":
             result = sqlDatabase.performInternalQuery("05.sql", values['-inputArgs-'])
+            prepend = ('Name', 'MoveSpeed')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "06":
             result = sqlDatabase.performInternalQuery("06.sql", values['-inputArgs-'])
+            prepend = ('Name', 'Difficulty')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "07":
             result = sqlDatabase.performInternalQuery("07.sql", values['-inputArgs-'])
+            prepend = ('Name', 'HP')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "08":
             result = sqlDatabase.performInternalQuery("08.sql", values['-inputArgs-'])
+            prepend = ('Name', 'Mana')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "09":
             result = sqlDatabase.performInternalQuery("09.sql", values['-inputArgs-'])
+            prepend = ('Name', 'Move Speed')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "10":
             result = sqlDatabase.performInternalQuery("10.sql", values['-inputArgs-'])
+            prepend = ('Name', 'Attack Damage')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "11":
             result = sqlDatabase.performInternalQuery("11.sql", values['-inputArgs-'])
+            prepend = ('Name', 'Attack Range')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "12":
             result = sqlDatabase.performInternalQuery("12.sql", values['-inputArgs-'])
+            prepend = ('Name', 'Attack Speed')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "13":
             result = sqlDatabase.performInternalQuery("13.sql", values['-inputArgs-'])
+            prepend = ('Name', 'Armor')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "14":
             result = sqlDatabase.performInternalQuery("14.sql", values['-inputArgs-'])
+            prepend = ('Name', 'Magic Resist')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "15":
             result = sqlDatabase.performInternalQuery("15.sql", values['-inputArgs-'])
+            prepend = ('Name', 'Type', 'HP', 'Mana', 'Move Speed', 'Armor', "Magic Resist", 'Attack Range', 'Health '
+                                                                                                            'Regen',
+                       'Mana Regen', 'Attack Damage', 'Attack Speed')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "16":
             result = sqlDatabase.performInternalQuery("16.sql", values['-inputArgs-'])
+            prepend = ('Name', 'attack', 'defense', 'magic', 'difficulty', 'tags', 'hp', 'hpperlevel', 'mp', 'mpperlevel',
+                       'movespeed', 'armor', 'armorperlevel', 'spellblock', 'spellblockperlevel', 'attackrange',
+                       'hpregen', 'hpregenperlevel', 'mpregen', 'mpregenperlevel', 'crit', 'critperlevel',
+                       'attackdamage', 'attackdamageperlevel', 'attackspeedperlevel', 'attackspeed')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
         elif values['-FILE LIST-'][0][:2] == "17":
             result = sqlDatabase.performInternalQuery("17.sql", values['-inputArgs-'])
+            prepend = ('Game ID', 'Result', 'Total Team 1 Wins', ' Total Team 2 Wins', 'red top', 'red jungle', 'red mid',
+                       'red adc', 'red support', 'blue top', 'blue jungle', 'blue mid', 'blue adc', 'blue support')
+            result.insert(0, prepend)
             window['-TABLE-'].update([list(result) for result in result])
 
         else:
