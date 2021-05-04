@@ -15,8 +15,8 @@ def make_table(num_rows, num_cols):
 
 
 # ------ Make the Table Data ------
-data = make_table(num_rows=100, num_cols=10)
-headings = [str(data[0][x]) + '          ' for x in range(len(data[0]))]
+data = make_table(num_rows=100, num_cols=20)
+headings = [str(data[0][x]) + '     ' for x in range(len(data[0]))]
 
 sql_search = [
     [
